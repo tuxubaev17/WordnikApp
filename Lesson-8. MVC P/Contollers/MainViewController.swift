@@ -82,6 +82,14 @@ extension MainViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchText = searchBar.text else { return }
         getSynonims(searchText.lowercased())
-        
+    }
+    
+    // Скрытие клавиатуры
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first as? UITouch {
+            view.endEditing(true)
+        }
+        super.touchesBegan(touches, with: event)
     }
 }
